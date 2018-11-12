@@ -14,6 +14,7 @@ namespace TPR3
         public ProgrMenu()
         {
             InitializeComponent();
+            dataGridView1.AllowUserToAddRows = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,7 +31,6 @@ namespace TPR3
             m = Int32.Parse(numericUpDown2.Text);
             dataGridView1.RowCount = n;
             dataGridView1.ColumnCount = m;
-            dataGridView1.AllowUserToAddRows = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
