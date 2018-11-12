@@ -11,7 +11,7 @@ namespace TPR3
             InitializeComponent();
         }
 
-        public void fillTable(List<Tuple<int, decimal, decimal>> table)
+        public void fillTable(List<Tuple<int, decimal, decimal, int, int>> table)
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
@@ -19,6 +19,8 @@ namespace TPR3
             dataGridView1.Columns[0].HeaderText = "шаг";
             dataGridView1.Columns[1].HeaderText = "M";
             dataGridView1.Columns[2].HeaderText = "V";
+            dataGridView1.Columns[3].HeaderText = "iMin";
+            dataGridView1.Columns[4].HeaderText = "jMax";
         }
     }
 }

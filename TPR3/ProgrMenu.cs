@@ -8,7 +8,7 @@ namespace TPR3
 {
     public partial class ProgrMenu : Form
     {
-        List<Tuple<int, decimal, decimal>> result = new List<Tuple<int, decimal, decimal>>();
+        List<Tuple<int, decimal, decimal, int, int>> result = new List<Tuple<int, decimal, decimal, int, int>>();
         private int accuracy, iter, n, m;
 
         public ProgrMenu()
@@ -37,6 +37,7 @@ namespace TPR3
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
+            result.Clear();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -66,23 +67,23 @@ namespace TPR3
                 kIter[k] = k + 1;
                 for (int i = 0; i < n; i++)
                 {
-                    g[i] += a[i, jMax];
+                    g[i] += a[jMax, i];
                 }
                 for (int j = 0; j < m; j++)
                 {
-                    h[j] += a[iMin, j];
+                    h[j] += a[j, iMin];
                 }
 
                 M[k] = Math.Round(g.Min()/(k + 1), Int32.Parse(numericUpDown4.Text));
                 iMin = g.ToList().IndexOf(g.Min());
                 V[k] = Math.Round(h.Max()/(k + 1), Int32.Parse(numericUpDown4.Text));
                 jMax = h.ToList().IndexOf(h.Max());
-                result.Add(new Tuple<int, decimal, decimal>(kIter[k], M[k], V[k]));
+                result.Add(new Tuple<int, decimal, decimal, int, int>(kIter[k], M[k], V[k], iMin+1, jMax+1));
             }
             
             Table table = new Table();
             table.fillTable(result);
-            table.Show();
+            table.ShowDialog();
         }
     }
 }
