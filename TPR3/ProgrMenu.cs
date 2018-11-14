@@ -8,7 +8,7 @@ namespace TPR3
 {
     public partial class ProgrMenu : Form
     {
-        List<Tuple<int, decimal, decimal, int, int>> result = new List<Tuple<int, decimal, decimal, int, int>>();
+        List<Tuple<int, decimal, decimal, int, int, decimal>> result = new List<Tuple<int, decimal, decimal, int, int, decimal>>();
         private int accuracy, iter, n, m;
 
         public ProgrMenu()
@@ -78,10 +78,10 @@ namespace TPR3
                 iMin = g.ToList().IndexOf(g.Min());
                 V[k] = Math.Round(h.Max()/(k + 1), Int32.Parse(numericUpDown4.Text));
                 jMax = h.ToList().IndexOf(h.Max());
-                result.Add(new Tuple<int, decimal, decimal, int, int>(kIter[k], M[k], V[k], iMin+1, jMax+1));
+                result.Add(new Tuple<int, decimal, decimal, int, int, decimal>(kIter[k], M[k], V[k], iMin+1, jMax+1, (M[k] + V[k]) / 2));
             }
             
-            Table table = new Table();
+            Table table = new Table(result, iter, n);
             table.fillTable(result);
             table.ShowDialog();
         }
